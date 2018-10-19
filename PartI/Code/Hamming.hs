@@ -13,3 +13,6 @@ merge xxs@(x:xs) yys@(y:ys) | x == y = x : merge xs ys
                             | x >  y = y : merge xxs ys
 merge xxs        []                  = xxs
 merge []          yys                = yys
+
+checkHamming :: Bool
+checkHamming = hamming20 == (take 20 hamming)
