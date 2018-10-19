@@ -7,8 +7,8 @@ hamming :: Num a => [a]
 hamming = []
 
 -- hammingNext takes in a number n and returns the list of the hamming numbers directly generated from n and n itself
-hammingNext :: Num a => a -> [a]
-hammingNext n = [n, x, y, z]
+hammingNext :: Num a => a -> (a,a,a,a)
+hammingNext n = (n, x, y, z)
                     where x = 2*n
                           y = 3*n
                           z = 5*n
