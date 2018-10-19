@@ -7,15 +7,15 @@ hamming :: (Num a, Ord a) => [a]
 hamming = hammingFrom 1
 
 -- hammingNext takes in a number n and returns the list of the hamming numbers directly generated from n and n itself
-hammingNext :: Num a => a -> (a,a,a,a)
-hammingNext n = (n, x, y, z)
+hammingNext :: Num a => a -> (a,a,a)
+hammingNext n = (x, y, z)
                     where x = 2*n
                           y = 3*n
                           z = 5*n
 
 hammingFrom :: (Num a, Ord a) => a -> [a]
 hammingFrom n = merge [n] (merge (hammingFrom x) (merge (hammingFrom y) (hammingFrom z)))
-                    where (n, x, y, z) = hammingNext n
+                    where (x, y, z) = hammingNext n
 
 -- merge takes in 2 lists of the same type and sorts them in asscending order with no duplicates
 merge :: Ord a => [a] -> [a] -> [a]
