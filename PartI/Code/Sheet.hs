@@ -11,11 +11,16 @@ data BinOp = Add | Sub | Mul | Div
 data Exp = Lit Double
          | Ref CellRef
          | App BinOp Exp Exp
+         | Sum CellRef CellRef
+         | Avg CellRef CellRef
 
 evalCell :: Sheet Double -> Exp -> Double
 evalCell _ (Lit v)        = v
 evalCell s (Ref r)        = s ! r
 evalCell s (App op e1 e2) = (evalOp op) (evalCell s e1) (evalCell s e2)
+evalCell s (Sum r1 r2)    = sum [ evalCell s (Ref r) | r <- range (r1,r2) ]
+evalCell s (Avg r1 r2)    = sum [ evalCell s (Ref r) | r <- rs ] / fromIntegral(length rs)
+                                where rs = range (r1,r2)
 
 evalOp :: BinOp -> (Double -> Double -> Double)
 evalOp Add = (+)
@@ -39,5 +44,5 @@ testSheet = array (('a', 1), ('c', 3))
                     (('b', 3), App Mul (Ref ('a', 1)) (Ref ('a', 2))),
                     (('c', 1), App Add (Ref ('a',1)) (Ref ('b',3))),
                     (('c', 2), Lit 3.0),
-                    (('c', 3), Lit 7.0)
+                    (('c', 3), Avg ('a', 1) ('c', 2))
                   ]
