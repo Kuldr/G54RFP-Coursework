@@ -19,4 +19,4 @@ merge []          yys                = yys
 -- hamming' generates an infinite list of hamming numbers by filtering numbers
 --      with the prime factors 2,3,5
 hamming' :: Integral a => [a]
-hamming' = filter (\n -> all (<= 5) $ primeFactors n) [1..]
+hamming' = filter (\n -> all (`elem` [2,3,5]) $ primeFactors n) [1..]
