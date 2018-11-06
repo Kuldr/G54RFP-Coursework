@@ -12,9 +12,6 @@ merge :: Ord a => [a] -> [a] -> [a]
 merge xxs@(x:xs) yys@(y:ys) | x == y = x : merge xs ys
                             | x <  y = x : merge xs yys
                             | x >  y = y : merge xxs ys
-merge xxs        []                  = xxs
-merge []          yys                = yys
-
 
 -- hamming' generates an infinite list of hamming numbers by filtering numbers
 --      with the prime factors 2,3,5
