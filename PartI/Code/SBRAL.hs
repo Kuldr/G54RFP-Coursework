@@ -8,16 +8,16 @@ data Tree a = Leaf a | Node (Tree a) a (Tree a) deriving Show
 type RList a = [(Int, Tree a)]
 
 
-delete :: Int -> RList a -> RList a
-delete i ((w, t) : wts) | i < w     = deleteTree i w t ++ wts
-                        | otherwise = delete (i - w) wts
+drop :: Int -> RList a -> RList a
+drop i ((w, t) : wts) | i < w       = dropTree i w t ++ wts
+                      | otherwise = drop (i - w) wts
 
-deleteTree :: Int -> Int -> Tree a -> RList a
-deleteTree i _ (Leaf x) | i /= 0    = []
-                        | otherwise = [(1, Leaf x)]
-deleteTree i w (Node t1 x t2) | i == 0    = [(w, (Node t1 x t2))]
-                              | i <= w'   = deleteTree (i - 1) w' t1 ++ [(w', t2)]
-                              | otherwise = deleteTree (i - w' - 1) w' t2
+dropTree :: Int -> Int -> Tree a -> RList a
+dropTree i _ (Leaf x) | i /= 0    = []
+                      | otherwise = [(1, Leaf x)]
+dropTree i w (Node t1 x t2) | i == 0    = [(w, (Node t1 x t2))]
+                            | i <= w'   = dropTree (i - 1) w' t1 ++ [(w', t2)]
+                            | otherwise = dropTree (i - w' - 1) w' t2
                                     where
                                         w' = w `div` 2
 
