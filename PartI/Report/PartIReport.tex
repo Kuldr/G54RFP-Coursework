@@ -4,6 +4,7 @@
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{indentfirst}
+\usepackage{enumerate}
 \lstset{language=Haskell}
 \usepackage[margin=2cm]{geometry}
 \graphicspath{ {images/} }
@@ -18,8 +19,7 @@
 For this problem I developed 2 solutions, one using a naive approach checking which numbers are hamming numbers and the other generating the list of hamming numbers based upon previous values in the list.
 \subsubsection{Naive Approach}
 The Naive approach is defined in the following way:
-\lstinputlisting[language=Haskell, firstline=1, lastline=1]{../Code/Hamming.hs}
-\lstinputlisting[language=Haskell, firstline=21, lastline=22]{../Code/Hamming.hs}
+\lstinputlisting[language=Haskell, firstline=1, lastline=3]{reportCode.hs}
 \par
 The type of hamming' is a list elements of the type class Integral.
 Strictly it is of type Integer but the use of type classes allows for easy readability and expandability.
@@ -36,23 +36,54 @@ Therefore any hamming number will have only 2, 3 and 5 as prime factors.
 \par
 To exploit this the condition to filter on finds the prime factors of the number (represented as the list of prime factors) and checks that the only elements in the prime factor list are either 2, 3 or 5.
 If there is any prime factors that aren't 2, 3 or 5 then the number isn't added to the list and the next value is tested.
-\\ \par
+\medskip
+\par
 The problem with this approach is that it tests all the integers systematically meaning that there is a lot of numbers to consider.
 primeFactors also takes a long time to run as it has to systematically find the prime factors.
 This gets computational expensive for large numbers.
 
 \subsubsection{Main Approach}
 The main approach is defined in the following way:
-\lstinputlisting[language=Haskell, firstline=4, lastline=8]{../Code/Hamming.hs}
+\lstinputlisting[language=Haskell, firstline=5, lastline=9]{reportCode.hs}
 \par
 The type of hamming is the same as hamming' as they will both produce the same infinite list.
 This being a list of Integrals.
 \par
-EXPLAIN THIS
+hamming works by adding a modified version of hamming to the end of itself.
+3 different modifications to the list are made, multiplying the list by 2, 3 and 5 represented by hamming2, hamming3 and hamming5.
+To achieve this we map the multiplication of the respective number across the list.
+\par
+This will create 3 infinite lists that need to be combined into 1 list.
+To do so the merge function is used to join 2 such lists together.
+To merge all 3 lists all that is needed to be done is 2 lists are merged together and the result of that is merged with the final list.
+As the merge function removes duplicates we don't need to worry about duplicates in the list.
 
 \subsection{Cyclic Graphs}
 
 \section{Task I.2 --- SpreadSheet Evaluator}
+\subsection{Solution}
+The following lines were added to evalCell to extend it to allow evaluation of sum and average expressions:
+\lstinputlisting[language=Haskell, firstline=11, lastline=14]{reportCode.hs}
+\par
+To evaluate the sum between 2 cells a list of the cell values is created and then sum is used to add them all together.
+To get all of the cell values to sum together, range is used to get a list of the cell references needed to be added together.
+For each cell in that range evalCell is called upon it to get the cell value.
+\medskip
+\par
+Average works in a similar way using the sum function previously defined to get the sum between the 2 cell references.
+This value is then divided by the number of values added together, which can be found out by getting the length of the range between the 2 cells.
+fromIntegral is used as / needs both values to be a Double but length will return an Integer.
+\subsection{Weakness in the Evaluator}
+The weakness in this evaluator is that if there is any cells that reference each other otherwise known as a circular reference.
+If this occurs then the evaluator will hang as it tries to calculate an infinite loop.
+One way to fix this would be to check for circular references before evaluating a sheet and if there is a circular reference throw an error.
+This can be done by representing the sheet as a graph with each cell being a node and dependencies on other cells being edges.
+Once this graph is generated you can perform cycle detection upon it to find circular references.
+\par
+Another approach that Microsoft Excel can use to compute circular references is to iterate over the sheet a number of times.
+This can be necessary for some iterative functions to run.
+You can calculate the value of the cell depending on the previous values and iterate up until a fixed number of iterations or until the values in the cells don't change.
+
 \section{Task I.3 --- Skew Binary Random Access Trees}
 \section{Task I.4 --- Interval Arithmetic}
 
