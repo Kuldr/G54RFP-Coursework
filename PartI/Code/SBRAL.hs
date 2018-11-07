@@ -4,12 +4,23 @@ module SBRAL where
 
 import Prelude hiding (head, tail, lookup, drop)
 
-data Tree a = Leaf a | Node (Tree a) a (Tree a) deriving Show
+data Tree a = Leaf a | Node (Tree a) a (Tree a) deriving (Show, Eq)
 type RList a = [(Int, Tree a)]
 
+testDrop :: Int -> Bool
+testDrop i = list1 == drop i list2
+                where list1 = last $ take i (iterate (cons 1) empty)
+                      list2 = last $ take (2*i) (iterate (cons 1) empty)
+
+testDrops :: [Bool]
+testDrops = [ testDrop i | i <- [1..] ]
+
+testDropsToN :: Int -> Bool
+testDropsToN n = and $ take n testDrops
 
 drop :: Int -> RList a -> RList a
-drop i ((w, t) : wts) | i < w       = dropTree i w t ++ wts
+drop _ [] = []
+drop i ((w, t) : wts) | i < w     = dropTree i w t ++ wts
                       | otherwise = drop (i - w) wts
 
 dropTree :: Int -> Int -> Tree a -> RList a

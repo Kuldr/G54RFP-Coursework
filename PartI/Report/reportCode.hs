@@ -14,6 +14,7 @@ evalCell s (Avg r1 r2) = evalCell s (Sum r1 r2)
                             / fromIntegral(length $ range (r1,r2))
 
 drop :: Int -> RList a -> RList a
+drop _ [] = []
 drop i ((w, t) : wts) | i < w     = dropTree i w t ++ wts
                       | otherwise = drop (i - w) wts
 
@@ -43,3 +44,16 @@ instance Fractional Ivl where
 
 (+/-) :: Double -> Double -> Ivl
 (+/-) n x = Ivl (n-x) (n+x)
+
+data Tree a = Leaf a | Node (Tree a) a (Tree a) deriving (Show, Eq)
+
+testDrop :: Int -> Bool
+testDrop i = list1 == drop i list2
+                where list1 = last $ take i (iterate (cons 1) empty)
+                      list2 = last $ take (2*i) (iterate (cons 1) empty)
+
+testDrops :: [Bool]
+testDrops = [ testDrop i | i <- [1..] ]
+
+testDropsToN :: Int -> Bool
+testDropsToN n = and $ take n testDrops

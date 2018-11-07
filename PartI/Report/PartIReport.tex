@@ -5,6 +5,7 @@
 \usepackage{listings}
 \usepackage{indentfirst}
 \usepackage{enumerate}
+\usepackage{multicol}
 \lstset{language=Haskell}
 \usepackage[margin=2cm]{geometry}
 \graphicspath{ {images/} }
@@ -13,6 +14,14 @@
 \title{COMP4075/G54RFP Coursework Part I}
 \date{7\textsuperscript{th} November 2018}
 \author{Benjamin Charlton - psybc3 - 4262648}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Benjamin Charlton | psybc3 | 4262648}
+\rhead{G54RFP}
+\cfoot{\thepage}
 
 \begin{document}
 
@@ -63,7 +72,15 @@ To merge all 3 lists all that is needed to be done is 2 lists are merged togethe
 As the merge function removes duplicates we don't need to worry about duplicates in the list.
 
 \subsection{Cyclic Graphs}
-Using `\lstinline[language = haskell]{main = take 4 hamming}' to show how the first 4 numbers are printed to the screen.
+Using \lstinline[language = haskell]{main = take 4 hamming} to show how the first 4 numbers are printed to the screen.
+Links are shown via numbering the pointers and each excuction step is also numbered.
+\begin{center}
+    \begin{multicols}{2}
+        \includegraphics[scale=0.45]{HammingCycle1.pdf}
+        \includegraphics[scale=0.45]{HammingCycle2.pdf}
+    \end{multicols}
+\end{center}
+
 
 \section{Task I.2 --- SpreadSheet Evaluator}
 \subsection{Solution}
@@ -92,7 +109,7 @@ You can calculate the value of the cell depending on the previous values and ite
 \section{Task I.3 --- Skew Binary Random Access Lists}
 \subsection{Solution}
 The following lines were added to implment drop for Skew Binary Random Access Lists:
-\lstinputlisting[language=Haskell, firstline=16, lastline=27]{reportCode.hs}
+\lstinputlisting[language=Haskell, firstline=16, lastline=28]{reportCode.hs}
 \par
 drop takes the number of elements to drop (i) and the SBRAL to drop from and returns a new SBRAL with the first i elements dropped.
 To begin with it checks the first tree in the list and compares the weight of the tree with number of elements to drop.
@@ -108,13 +125,32 @@ In this case the left sub tree doesn't need to be explored so it is repacked int
 If the number of nodes to drop is greater than \( \frac{1}{2} \) the weight then the right subtree can be completely disregarded and a number of elements need to be dropped from the left sub tree.
 
 \subsection{Time Complexity}
-The solution has the desired time complexity of \( O(log\ n) \) as
+The solution has the desired time complexity of  \( O(log\ n) \) just like lookup and update.
+Like lookup and update, drop is implemented in a similar way therefore having the same time complexity.
+\par
+It will first find the correct tree it needs to drop elements from, by iterating through the list which is as long as the number of digits it takes to represent the number of elements stored as a skew binary number.
+As with positional numbering systems the number of digits need is proportional to the size of the number by  \( log\ n \).
+Therefore it takes \( O(log\ n) \) to find the correct tree it needs to drop elements from.
+\par
+To find the right element in the tree will take \( O(log\ n) \) as you need to go down the height of the tree making a decision at each level for which way to branch only once.
+As its a binary tree the height is \( log\ n \).
+Therefore it takes \( O(log\ n) \) to find the correct elements in the tree to stop dropping at.
+\par
+The overall worse case time complexity is \( log\ n + log\ n \) which can be shown as \( O(log\ n) \).
+
+\subsection{Testing}
+To test drop the following code was used:
+\lstinputlisting[language=Haskell, firstline=48, lastline=59]{reportCode.hs}
+\par
+testDrop builds 2 SBRAL made entirely of 1s, one which is twice the size of the other, based upon the input number.
+It then tries to drop that many elements from the large list meaning the 2 lists should be the same list in the end and test for that.
+The other 2 functions implement a way to test dropping up to n elements from a list combines the result of all of those tests.
 
 \section{Task I.4 --- Interval Arithmetic}
 \subsection{Solution}
 \subsubsection{Instance of Num}
 The following lines were added to make Ivl an instance of Num:
-\lstinputlisting[language=Haskell, firstline=29, lastline=36]{reportCode.hs}
+\lstinputlisting[language=Haskell, firstline=30, lastline=37]{reportCode.hs}
 \par
 The definitions for +, - and * taken from wikipedia and implemented in Hakell - \url{https://en.wikipedia.org/wiki/Interval_arithmetic#Simple_arithmetic}.
 While + and - are simple, * uses a list comprehension to find all possible bounds of multiplying the 2 intervals together and takes the smallest for the lower bound and largest for the upper bound.
@@ -125,7 +161,7 @@ signum returns an interval with each bound being the signum of each of the bound
 
 \subsubsection{Instance of Fractional}
 The following lines were added to make Ivl an instance of Fractional:
-\lstinputlisting[language=Haskell, firstline=38, lastline=42]{reportCode.hs}
+\lstinputlisting[language=Haskell, firstline=39, lastline=43]{reportCode.hs}
 \par
 Division is defined in the same way as multiplication in the Num instance using a list comprehension to create all possible bounds and taking the minimum and maximum.
 fromRational is similar to fromInteger creating a interval of that rational number only.
@@ -134,10 +170,12 @@ It simply divides 1 by the interval, this will use fromInteger and the previousl
 
 \subsubsection{Defining \( \pm \) for Ivl}
 The following lines were added to define the \( \pm \) function:
-\lstinputlisting[language=Haskell, firstline=44, lastline=45]{reportCode.hs}
+\lstinputlisting[language=Haskell, firstline=45, lastline=46]{reportCode.hs}
 \par
 \( \pm \) is an inline operator that will take 2 doubles and construct a symmetric interval around a the first double with the bounds being the size of the second double away from the middle.
 
+\subsection{Testing}
+A few tests were written and are in the code for intervals but the tests aren't complete and don't test all of the functions defined.
 
 
 
