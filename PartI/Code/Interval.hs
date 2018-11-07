@@ -1,6 +1,5 @@
 data Ivl = Ivl Double Double deriving (Show, Eq)
 
-
 instance Num Ivl where
     (Ivl xl xu) + (Ivl yl yu) = Ivl (xl+yl) (xu+yu)
     (Ivl xl xu) - (Ivl yl yu) = Ivl (xl-yu) (xu-yl)
@@ -8,7 +7,7 @@ instance Num Ivl where
                                     where ls = [ x*y | x <- [xl, xu], y <- [yl, yu] ]
     abs (Ivl xl xu) = Ivl 0 (abs (xl - xu))
     fromInteger n = Ivl (fromIntegral n) (fromIntegral n)
-    signum i = Ivl (signum x) (signum x) where (Ivl x _) = abs i
+    signum (Ivl xl xu) = Ivl (signum xl) (signum xu)
 
 instance Fractional Ivl where
     (Ivl xl xu) / (Ivl yl yu) = Ivl (minimum ls) (maximum ls)

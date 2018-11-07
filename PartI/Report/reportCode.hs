@@ -25,3 +25,21 @@ dropTree i w (Node t1 x t2) | i == 0    = [(w, (Node t1 x t2))]
                             | otherwise = dropTree (i - w' - 1) w' t2
                                 where
                                     w' = w `div` 2
+
+instance Num Ivl where
+    (Ivl xl xu) + (Ivl yl yu) = Ivl (xl+yl) (xu+yu)
+    (Ivl xl xu) - (Ivl yl yu) = Ivl (xl-yu) (xu-yl)
+    (Ivl xl xu) * (Ivl yl yu) = Ivl (minimum ls) (maximum ls)
+                                    where ls = [ x*y | x <- [xl, xu], y <- [yl, yu] ]
+    abs (Ivl xl xu) = Ivl 0 (abs (xl - xu))
+    fromInteger n = Ivl (fromIntegral n) (fromIntegral n)
+    signum (Ivl xl xu) = Ivl (signum xl) (signum xu)
+
+instance Fractional Ivl where
+    (Ivl xl xu) / (Ivl yl yu) = Ivl (minimum ls) (maximum ls)
+                                    where ls = [ x/y | x <- [xl, xu], y <- [yl, yu] ]
+    fromRational n = Ivl (fromRational n) (fromRational n)
+    recip i = 1 / i
+
+(+/-) :: Double -> Double -> Ivl
+(+/-) n x = Ivl (n-x) (n+x)

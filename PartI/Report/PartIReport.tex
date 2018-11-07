@@ -10,9 +10,13 @@
 \graphicspath{ {images/} }
 \renewcommand{\familydefault}{\sfdefault}
 
-%TODO: Add Title
+\title{COMP4075/G54RFP Coursework Part I}
+\date{7\textsuperscript{th} November 2018}
+\author{Benjamin Charlton - psybc3 - 4262648}
 
 \begin{document}
+
+\maketitle
 
 \section{Task I.1 --- Hamming Numbers}
 \subsection{Solutions}
@@ -59,6 +63,7 @@ To merge all 3 lists all that is needed to be done is 2 lists are merged togethe
 As the merge function removes duplicates we don't need to worry about duplicates in the list.
 
 \subsection{Cyclic Graphs}
+Using `\lstinline[language = haskell]{main = take 4 hamming}' to show how the first 4 numbers are printed to the screen.
 
 \section{Task I.2 --- SpreadSheet Evaluator}
 \subsection{Solution}
@@ -84,17 +89,56 @@ Another approach that Microsoft Excel can use to compute circular references is 
 This can be necessary for some iterative functions to run.
 You can calculate the value of the cell depending on the previous values and iterate up until a fixed number of iterations or until the values in the cells don't change.
 
-\section{Task I.3 --- Skew Binary Random Access Trees}
+\section{Task I.3 --- Skew Binary Random Access Lists}
 \subsection{Solution}
-The following lines were added to implment drop for Skew Binary Random Access Trees:
+The following lines were added to implment drop for Skew Binary Random Access Lists:
 \lstinputlisting[language=Haskell, firstline=16, lastline=27]{reportCode.hs}
 \par
-drop compares the fi
+drop takes the number of elements to drop (i) and the SBRAL to drop from and returns a new SBRAL with the first i elements dropped.
+To begin with it checks the first tree in the list and compares the weight of the tree with number of elements to drop.
+If the weight is \( \geq \) to the number of elements to drop, the first tree is ignored and then the subsequent number of elements are dropped from the remaining list recursively.
+If the number to drop is less than the weight of the first tree it will try to drop i elements from the first tree and keep the rest of the list the same.
+This is done via the helper function dropTree.
+\par
+dropTree has a couple of base cases for dropping a leaf node, if there are any number of nodes to drop it returns the empty list otherwise it will return a list with the leaf.
+If a number of elements need to be dropped from a none leaf node then there is a series of guards that test for differing cases.
+If 0 elements need to be dropped dropTree will repackage the weight and tree into a single element list and then return it.
+If the number of nodes to drop is less than or equal to \( \frac{1}{2} \) the weight it is known that the root node needs to be dropped and potentially some elements in the right sub tree.
+In this case the left sub tree doesn't need to be explored so it is repacked into a new RList and appended after the result of the recursive dropTree call.
+If the number of nodes to drop is greater than \( \frac{1}{2} \) the weight then the right subtree can be completely disregarded and a number of elements need to be dropped from the left sub tree.
 
 \subsection{Time Complexity}
 The solution has the desired time complexity of \( O(log\ n) \) as
 
 \section{Task I.4 --- Interval Arithmetic}
+\subsection{Solution}
+\subsubsection{Instance of Num}
+The following lines were added to make Ivl an instance of Num:
+\lstinputlisting[language=Haskell, firstline=29, lastline=36]{reportCode.hs}
+\par
+The definitions for +, - and * taken from wikipedia and implemented in Hakell - \url{https://en.wikipedia.org/wiki/Interval_arithmetic#Simple_arithmetic}.
+While + and - are simple, * uses a list comprehension to find all possible bounds of multiplying the 2 intervals together and takes the smallest for the lower bound and largest for the upper bound.
+\par
+abs takes the interval and returns an interval between 0 and the absolute size of the original interval.
+fromInteger simply takes a single value and returns a interval that is containing only that value.
+signum returns an interval with each bound being the signum of each of the bounds.
+
+\subsubsection{Instance of Fractional}
+The following lines were added to make Ivl an instance of Fractional:
+\lstinputlisting[language=Haskell, firstline=38, lastline=42]{reportCode.hs}
+\par
+Division is defined in the same way as multiplication in the Num instance using a list comprehension to create all possible bounds and taking the minimum and maximum.
+fromRational is similar to fromInteger creating a interval of that rational number only.
+recip doesn't have to be defined as the compiler can infer this definition from the both fromInteger and division but it has been added for clarity.
+It simply divides 1 by the interval, this will use fromInteger and the previously defined divide.
+
+\subsubsection{Defining \( \pm \) for Ivl}
+The following lines were added to define the \( \pm \) function:
+\lstinputlisting[language=Haskell, firstline=44, lastline=45]{reportCode.hs}
+\par
+\( \pm \) is an inline operator that will take 2 doubles and construct a symmetric interval around a the first double with the bounds being the size of the second double away from the middle.
+
+
 
 
 
