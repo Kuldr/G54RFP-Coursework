@@ -270,3 +270,15 @@ TSWLatexianTemp*
 
 # standalone packages
 *.sta
+
+PartII/Code/calculator
+
+PartII/Code/calculator\.hi
+
+PartII/Code/calculator\.o
+
+PartII/Code/diningPhilosophers
+
+PartII/Code/diningPhilosophers\.hi
+
+PartII/Code/diningPhilosophers\.o
