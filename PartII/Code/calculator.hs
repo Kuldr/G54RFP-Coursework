@@ -14,7 +14,7 @@ instance Show Calc where
     show (Add c d) = show c ++ " + " ++ show d
     show (Min c d) = show c ++ " - " ++ show d
     show (Div c d) = show c ++ " ÷ " ++ show d
-    show (Mul c d) = show c ++ " * " ++ show d
+    show (Mul c d) = show c ++ " x " ++ show d
 
 main :: IO ()
 main = do
@@ -29,7 +29,7 @@ setup window = do
 
     -- Create all the buttons from strings
     buttonsNum <- mapM createButton (map show [0..9])
-    buttonsOps <- mapM createButton ["+", "-", "*", "÷"]
+    buttonsOps <- mapM createButton ["+", "-", "x", "÷"]
     buttonPi <- createButton "π"
     buttonE <- createButton "e"
     buttonRt2 <- createButton "√2"
@@ -40,7 +40,7 @@ setup window = do
     buttonEq   <- createButton "="
 
     let eventsNum = zipWith createActionInt buttonsNum [0..9]
-    let eventsOps = zipWith createAction buttonsOps ["+", "-", "*", "÷"]
+    let eventsOps = zipWith createAction buttonsOps [(Add (Num 1) (Num 1)), (Min (Num 1) (Num 1)), (Mul (Num 1) (Num 1)), (Div (Num 1) (Num 1))]
     let eventPi    = (\x -> addPiCalculator x) <$ UI.click buttonPi
     let eventE     = (\x -> addECalculator x) <$ UI.click buttonE
     let eventRt2   = (\x -> addRt2Calculator x) <$ UI.click buttonRt2
@@ -85,11 +85,11 @@ addSign (C (c, d)) = (C ((Sign c), d))
 createButton :: String -> UI Element
 createButton s = UI.button # set UI.text s
 
-createAction :: Element -> String -> Event (Calculator -> Calculator)
-createAction button s | s == "+" = (\(C (c, d)) -> (C ((Add c (Num 0)), d)) ) <$ UI.click button
-createAction button s | s == "-" = (\(C (c, d)) -> (C ((Min c (Num 0)), d)) ) <$ UI.click button
-createAction button s | s == "*" = (\(C (c, d)) -> (C ((Mul c (Num 0)), d)) ) <$ UI.click button
-createAction button s | s == "÷" = (\(C (c, d)) -> (C ((Div c (Num 0)), d)) ) <$ UI.click button
+createAction :: Element -> Calc -> Event (Calculator -> Calculator)
+createAction button (Add _ _) = (\(C (c, d)) -> (C ((Add c (Num 0)), d)) ) <$ UI.click button
+createAction button (Min _ _) = (\(C (c, d)) -> (C ((Min c (Num 0)), d)) ) <$ UI.click button
+createAction button (Mul _ _) = (\(C (c, d)) -> (C ((Mul c (Num 0)), d)) ) <$ UI.click button
+createAction button (Div _ _) = (\(C (c, d)) -> (C ((Div c (Num 0)), d)) ) <$ UI.click button
 
 -- Operations are evaluated left to right NOT in order of precedence
 evaluateCalc :: Calculator -> Calculator
