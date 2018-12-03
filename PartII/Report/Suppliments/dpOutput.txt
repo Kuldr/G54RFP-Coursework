@@ -1,0 +1,495 @@
+14:16:42 | Socrates is thinking
+14:16:42 | Delaying Socrates 6 seconds
+14:16:42 | Kant is thinking
+14:16:42 | Delaying Kant 2 seconds
+14:16:42 | Aristotle is thinking
+14:16:42 | Delaying Aristotle 6 seconds
+14:16:42 | Descartes is thinking
+14:16:42 | Delaying Descartes 2 seconds
+14:16:42 | Plato is thinking
+14:16:42 | Delaying Plato 4 seconds
+14:16:42 | Aquinas is thinking
+14:16:42 | Delaying Aquinas 6 seconds
+14:16:42 | Marx is thinking
+14:16:42 | Delaying Marx 7 seconds
+14:16:44 | Kant is hungry
+14:16:44 | Kant is eating
+14:16:44 | Delaying Kant 5 seconds
+14:16:44 | Descartes is hungry
+14:16:44 | Descartes is eating
+14:16:44 | Delaying Descartes 5 seconds
+14:16:46 | Plato is hungry
+14:16:48 | Aristotle is hungry
+14:16:48 | Socrates is hungry
+14:16:48 | Aquinas is hungry
+14:16:48 | Aquinas is eating
+14:16:48 | Delaying Aquinas 8 seconds
+14:16:49 | Kant is thinking
+14:16:49 | Delaying Kant 7 seconds
+14:16:49 | Marx is hungry
+14:16:49 | Descartes is thinking
+14:16:49 | Delaying Descartes 5 seconds
+14:16:49 | Socrates is eating
+14:16:49 | Delaying Socrates 4 seconds
+14:16:49 | Aristotle is eating
+14:16:49 | Delaying Aristotle 6 seconds
+14:16:53 | Socrates is thinking
+14:16:53 | Delaying Socrates 3 seconds
+14:16:54 | Descartes is hungry
+14:16:55 | Descartes is eating
+14:16:55 | Delaying Descartes 3 seconds
+14:16:55 | Aristotle is thinking
+14:16:55 | Delaying Aristotle 3 seconds
+14:16:56 | Aquinas is thinking
+14:16:56 | Delaying Aquinas 5 seconds
+14:16:56 | Kant is hungry
+14:16:56 | Kant is eating
+14:16:56 | Delaying Kant 5 seconds
+14:16:56 | Marx is eating
+14:16:56 | Delaying Marx 2 seconds
+14:16:56 | Socrates is hungry
+14:16:58 | Descartes is thinking
+14:16:58 | Delaying Descartes 3 seconds
+14:16:58 | Marx is thinking
+14:16:58 | Delaying Marx 6 seconds
+14:16:58 | Aristotle is hungry
+14:16:58 | Plato is eating
+14:16:58 | Delaying Plato 2 seconds
+14:17:00 | Plato is thinking
+14:17:00 | Delaying Plato 2 seconds
+14:17:01 | Kant is thinking
+14:17:01 | Delaying Kant 9 seconds
+14:17:01 | Aquinas is hungry
+14:17:01 | Aquinas is eating
+14:17:01 | Delaying Aquinas 2 seconds
+14:17:01 | Descartes is hungry
+14:17:01 | Descartes is eating
+14:17:01 | Delaying Descartes 6 seconds
+14:17:01 | Socrates is eating
+14:17:01 | Delaying Socrates 5 seconds
+14:17:02 | Plato is hungry
+14:17:03 | Aquinas is thinking
+14:17:03 | Delaying Aquinas 2 seconds
+14:17:04 | Marx is hungry
+14:17:05 | Aquinas is hungry
+14:17:05 | Aquinas is eating
+14:17:05 | Delaying Aquinas 2 seconds
+14:17:06 | Socrates is thinking
+14:17:06 | Delaying Socrates 3 seconds
+14:17:07 | Aristotle is eating
+14:17:07 | Delaying Aristotle 6 seconds
+14:17:07 | Descartes is thinking
+14:17:07 | Delaying Descartes 9 seconds
+14:17:07 | Aquinas is thinking
+14:17:07 | Delaying Aquinas 7 seconds
+14:17:07 | Plato is eating
+14:17:07 | Delaying Plato 9 seconds
+14:17:07 | Marx is eating
+14:17:07 | Delaying Marx 10 seconds
+14:17:09 | Socrates is hungry
+14:17:10 | Kant is hungry
+14:17:13 | Aristotle is thinking
+14:17:13 | Delaying Aristotle 3 seconds
+14:17:13 | Kant is eating
+14:17:13 | Delaying Kant 8 seconds
+14:17:14 | Aquinas is hungry
+14:17:16 | Plato is thinking
+14:17:16 | Delaying Plato 7 seconds
+14:17:16 | Descartes is hungry
+14:17:16 | Descartes is eating
+14:17:16 | Delaying Descartes 5 seconds
+14:17:16 | Aristotle is hungry
+14:17:17 | Aquinas is eating
+14:17:17 | Delaying Aquinas 6 seconds
+14:17:17 | Marx is thinking
+14:17:17 | Delaying Marx 5 seconds
+14:17:21 | Kant is thinking
+14:17:21 | Delaying Kant 8 seconds
+14:17:21 | Descartes is thinking
+14:17:21 | Delaying Descartes 6 seconds
+14:17:21 | Socrates is eating
+14:17:21 | Delaying Socrates 2 seconds
+14:17:21 | Aristotle is eating
+14:17:21 | Delaying Aristotle 8 seconds
+14:17:22 | Marx is hungry
+14:17:23 | Aquinas is thinking
+14:17:23 | Delaying Aquinas 10 seconds
+14:17:23 | Plato is hungry
+14:17:23 | Plato is eating
+14:17:23 | Delaying Plato 10 seconds
+14:17:23 | Socrates is thinking
+14:17:23 | Delaying Socrates 4 seconds
+14:17:23 | Marx is eating
+14:17:23 | Delaying Marx 8 seconds
+14:17:27 | Socrates is hungry
+14:17:27 | Descartes is hungry
+14:17:29 | Kant is hungry
+14:17:29 | Kant is eating
+14:17:29 | Delaying Kant 7 seconds
+14:17:29 | Aristotle is thinking
+14:17:29 | Delaying Aristotle 5 seconds
+14:17:31 | Marx is thinking
+14:17:31 | Delaying Marx 3 seconds
+14:17:33 | Aquinas is hungry
+14:17:33 | Aquinas is eating
+14:17:33 | Delaying Aquinas 9 seconds
+14:17:33 | Descartes is eating
+14:17:33 | Delaying Descartes 7 seconds
+14:17:33 | Plato is thinking
+14:17:33 | Delaying Plato 2 seconds
+14:17:34 | Aristotle is hungry
+14:17:34 | Marx is hungry
+14:17:35 | Plato is hungry
+14:17:36 | Socrates is eating
+14:17:36 | Delaying Socrates 9 seconds
+14:17:36 | Kant is thinking
+14:17:36 | Delaying Kant 6 seconds
+14:17:40 | Aristotle is eating
+14:17:40 | Delaying Aristotle 3 seconds
+14:17:40 | Descartes is thinking
+14:17:40 | Delaying Descartes 9 seconds
+14:17:42 | Kant is hungry
+14:17:42 | Plato is eating
+14:17:42 | Delaying Plato 6 seconds
+14:17:42 | Aquinas is thinking
+14:17:42 | Delaying Aquinas 10 seconds
+14:17:43 | Aristotle is thinking
+14:17:43 | Delaying Aristotle 9 seconds
+14:17:45 | Marx is eating
+14:17:45 | Delaying Marx 1 seconds
+14:17:45 | Kant is eating
+14:17:45 | Delaying Kant 8 seconds
+14:17:45 | Socrates is thinking
+14:17:45 | Delaying Socrates 9 seconds
+14:17:46 | Marx is thinking
+14:17:46 | Delaying Marx 5 seconds
+14:17:48 | Plato is thinking
+14:17:48 | Delaying Plato 9 seconds
+14:17:49 | Descartes is hungry
+14:17:49 | Descartes is eating
+14:17:49 | Delaying Descartes 8 seconds
+14:17:51 | Marx is hungry
+14:17:51 | Marx is eating
+14:17:51 | Delaying Marx 6 seconds
+14:17:52 | Aquinas is hungry
+14:17:52 | Aristotle is hungry
+14:17:53 | Kant is thinking
+14:17:53 | Delaying Kant 8 seconds
+14:17:54 | Socrates is hungry
+14:17:57 | Plato is hungry
+14:17:57 | Plato is eating
+14:17:57 | Delaying Plato 6 seconds
+14:17:57 | Aristotle is eating
+14:17:57 | Delaying Aristotle 10 seconds
+14:17:57 | Descartes is thinking
+14:17:57 | Delaying Descartes 2 seconds
+14:17:57 | Marx is thinking
+14:17:57 | Delaying Marx 3 seconds
+14:17:57 | Socrates is eating
+14:17:57 | Delaying Socrates 4 seconds
+14:17:59 | Descartes is hungry
+14:18:00 | Marx is hungry
+14:18:01 | Kant is hungry
+14:18:01 | Socrates is thinking
+14:18:01 | Delaying Socrates 3 seconds
+14:18:01 | Marx is eating
+14:18:01 | Delaying Marx 2 seconds
+14:18:03 | Plato is thinking
+14:18:03 | Delaying Plato 4 seconds
+14:18:03 | Marx is thinking
+14:18:03 | Delaying Marx 1 seconds
+14:18:03 | Aquinas is eating
+14:18:03 | Delaying Aquinas 10 seconds
+14:18:04 | Socrates is hungry
+14:18:04 | Socrates is eating
+14:18:04 | Delaying Socrates 4 seconds
+14:18:04 | Marx is hungry
+14:18:07 | Aristotle is thinking
+14:18:07 | Delaying Aristotle 3 seconds
+14:18:07 | Plato is hungry
+14:18:07 | Descartes is eating
+14:18:07 | Delaying Descartes 6 seconds
+14:18:08 | Kant is eating
+14:18:08 | Delaying Kant 2 seconds
+14:18:08 | Socrates is thinking
+14:18:08 | Delaying Socrates 10 seconds
+14:18:10 | Aristotle is hungry
+14:18:10 | Kant is thinking
+14:18:10 | Delaying Kant 7 seconds
+14:18:13 | Aquinas is thinking
+14:18:13 | Delaying Aquinas 5 seconds
+14:18:13 | Aristotle is eating
+14:18:13 | Delaying Aristotle 8 seconds
+14:18:13 | Plato is eating
+14:18:13 | Delaying Plato 9 seconds
+14:18:13 | Descartes is thinking
+14:18:13 | Delaying Descartes 5 seconds
+14:18:13 | Marx is eating
+14:18:13 | Delaying Marx 8 seconds
+14:18:17 | Kant is hungry
+14:18:18 | Aquinas is hungry
+14:18:18 | Socrates is hungry
+14:18:18 | Descartes is hungry
+14:18:21 | Aristotle is thinking
+14:18:21 | Delaying Aristotle 2 seconds
+14:18:21 | Socrates is eating
+14:18:21 | Delaying Socrates 10 seconds
+14:18:21 | Marx is thinking
+14:18:21 | Delaying Marx 1 seconds
+14:18:22 | Descartes is eating
+14:18:22 | Delaying Descartes 10 seconds
+14:18:22 | Aquinas is eating
+14:18:22 | Delaying Aquinas 1 seconds
+14:18:22 | Plato is thinking
+14:18:22 | Delaying Plato 10 seconds
+14:18:22 | Marx is hungry
+14:18:23 | Aquinas is thinking
+14:18:23 | Delaying Aquinas 2 seconds
+14:18:23 | Aristotle is hungry
+14:18:25 | Aquinas is hungry
+14:18:25 | Aquinas is eating
+14:18:25 | Delaying Aquinas 10 seconds
+14:18:31 | Kant is eating
+14:18:31 | Delaying Kant 8 seconds
+14:18:31 | Socrates is thinking
+14:18:31 | Delaying Socrates 9 seconds
+14:18:32 | Descartes is thinking
+14:18:32 | Delaying Descartes 4 seconds
+14:18:32 | Plato is hungry
+14:18:35 | Plato is eating
+14:18:35 | Delaying Plato 2 seconds
+14:18:35 | Marx is eating
+14:18:35 | Delaying Marx 8 seconds
+14:18:35 | Aquinas is thinking
+14:18:35 | Delaying Aquinas 1 seconds
+14:18:36 | Aquinas is hungry
+14:18:36 | Descartes is hungry
+14:18:37 | Descartes is eating
+14:18:37 | Delaying Descartes 9 seconds
+14:18:37 | Plato is thinking
+14:18:37 | Delaying Plato 9 seconds
+14:18:39 | Kant is thinking
+14:18:39 | Delaying Kant 2 seconds
+14:18:40 | Socrates is hungry
+14:18:41 | Kant is hungry
+14:18:41 | Kant is eating
+14:18:41 | Delaying Kant 7 seconds
+14:18:43 | Aquinas is eating
+14:18:43 | Delaying Aquinas 1 seconds
+14:18:43 | Marx is thinking
+14:18:43 | Delaying Marx 6 seconds
+14:18:44 | Aquinas is thinking
+14:18:44 | Delaying Aquinas 7 seconds
+14:18:46 | Descartes is thinking
+14:18:46 | Delaying Descartes 5 seconds
+14:18:46 | Plato is hungry
+14:18:46 | Plato is eating
+14:18:46 | Delaying Plato 1 seconds
+14:18:47 | Plato is thinking
+14:18:47 | Delaying Plato 9 seconds
+14:18:48 | Socrates is eating
+14:18:48 | Delaying Socrates 8 seconds
+14:18:48 | Aristotle is eating
+14:18:48 | Delaying Aristotle 2 seconds
+14:18:48 | Kant is thinking
+14:18:48 | Delaying Kant 4 seconds
+14:18:49 | Marx is hungry
+14:18:50 | Aristotle is thinking
+14:18:50 | Delaying Aristotle 1 seconds
+14:18:51 | Descartes is hungry
+14:18:51 | Descartes is eating
+14:18:51 | Delaying Descartes 7 seconds
+14:18:51 | Aquinas is hungry
+14:18:51 | Aquinas is eating
+14:18:51 | Delaying Aquinas 10 seconds
+14:18:51 | Aristotle is hungry
+14:18:52 | Kant is hungry
+14:18:56 | Plato is hungry
+14:18:56 | Kant is eating
+14:18:56 | Delaying Kant 7 seconds
+14:18:56 | Socrates is thinking
+14:18:56 | Delaying Socrates 10 seconds
+14:18:58 | Descartes is thinking
+14:18:58 | Delaying Descartes 1 seconds
+14:18:59 | Descartes is hungry
+14:18:59 | Descartes is eating
+14:18:59 | Delaying Descartes 2 seconds
+14:19:01 | Marx is eating
+14:19:01 | Delaying Marx 8 seconds
+14:19:01 | Aquinas is thinking
+14:19:01 | Delaying Aquinas 4 seconds
+14:19:01 | Descartes is thinking
+14:19:01 | Delaying Descartes 1 seconds
+14:19:01 | Plato is eating
+14:19:01 | Delaying Plato 4 seconds
+14:19:02 | Descartes is hungry
+14:19:03 | Kant is thinking
+14:19:03 | Delaying Kant 4 seconds
+14:19:03 | Aristotle is eating
+14:19:03 | Delaying Aristotle 3 seconds
+14:19:05 | Aquinas is hungry
+14:19:05 | Plato is thinking
+14:19:05 | Delaying Plato 3 seconds
+14:19:06 | Socrates is hungry
+14:19:06 | Descartes is eating
+14:19:06 | Delaying Descartes 10 seconds
+14:19:06 | Aristotle is thinking
+14:19:06 | Delaying Aristotle 2 seconds
+14:19:07 | Kant is hungry
+14:19:07 | Kant is eating
+14:19:07 | Delaying Kant 7 seconds
+14:19:08 | Aristotle is hungry
+14:19:08 | Plato is hungry
+14:19:09 | Aquinas is eating
+14:19:09 | Delaying Aquinas 1 seconds
+14:19:09 | Marx is thinking
+14:19:09 | Delaying Marx 1 seconds
+14:19:10 | Aquinas is thinking
+14:19:10 | Delaying Aquinas 9 seconds
+14:19:10 | Marx is hungry
+14:19:10 | Marx is eating
+14:19:10 | Delaying Marx 8 seconds
+14:19:14 | Kant is thinking
+14:19:14 | Delaying Kant 2 seconds
+14:19:16 | Descartes is thinking
+14:19:16 | Delaying Descartes 10 seconds
+14:19:16 | Aristotle is eating
+14:19:16 | Delaying Aristotle 1 seconds
+14:19:16 | Plato is eating
+14:19:16 | Delaying Plato 6 seconds
+14:19:16 | Kant is hungry
+14:19:17 | Kant is eating
+14:19:17 | Delaying Kant 7 seconds
+14:19:17 | Aristotle is thinking
+14:19:17 | Delaying Aristotle 9 seconds
+14:19:18 | Marx is thinking
+14:19:18 | Delaying Marx 1 seconds
+14:19:19 | Aquinas is hungry
+14:19:19 | Marx is hungry
+14:19:19 | Marx is eating
+14:19:19 | Delaying Marx 7 seconds
+14:19:22 | Plato is thinking
+14:19:22 | Delaying Plato 8 seconds
+14:19:24 | Kant is thinking
+14:19:24 | Delaying Kant 9 seconds
+14:19:26 | Descartes is hungry
+14:19:26 | Descartes is eating
+14:19:26 | Delaying Descartes 9 seconds
+14:19:26 | Aquinas is eating
+14:19:26 | Delaying Aquinas 4 seconds
+14:19:26 | Socrates is eating
+14:19:26 | Delaying Socrates 4 seconds
+14:19:26 | Marx is thinking
+14:19:26 | Delaying Marx 10 seconds
+14:19:26 | Aristotle is hungry
+14:19:30 | Aquinas is thinking
+14:19:30 | Delaying Aquinas 1 seconds
+14:19:30 | Plato is hungry
+14:19:30 | Socrates is thinking
+14:19:30 | Delaying Socrates 9 seconds
+14:19:31 | Aquinas is hungry
+14:19:31 | Aquinas is eating
+14:19:31 | Delaying Aquinas 4 seconds
+14:19:33 | Kant is hungry
+14:19:33 | Kant is eating
+14:19:33 | Delaying Kant 6 seconds
+14:19:35 | Descartes is thinking
+14:19:35 | Delaying Descartes 6 seconds
+14:19:35 | Aquinas is thinking
+14:19:35 | Delaying Aquinas 2 seconds
+14:19:35 | Plato is eating
+14:19:35 | Delaying Plato 3 seconds
+14:19:36 | Marx is hungry
+14:19:36 | Marx is eating
+14:19:36 | Delaying Marx 6 seconds
+14:19:37 | Aquinas is hungry
+14:19:38 | Plato is thinking
+14:19:38 | Delaying Plato 1 seconds
+14:19:39 | Socrates is hungry
+14:19:39 | Plato is hungry
+14:19:39 | Plato is eating
+14:19:39 | Delaying Plato 9 seconds
+14:19:39 | Kant is thinking
+14:19:39 | Delaying Kant 1 seconds
+14:19:39 | Aristotle is eating
+14:19:39 | Delaying Aristotle 9 seconds
+14:19:40 | Kant is hungry
+14:19:41 | Descartes is hungry
+14:19:42 | Marx is thinking
+14:19:42 | Delaying Marx 8 seconds
+14:19:42 | Socrates is eating
+14:19:42 | Delaying Socrates 9 seconds
+14:19:48 | Plato is thinking
+14:19:48 | Delaying Plato 10 seconds
+14:19:48 | Descartes is eating
+14:19:48 | Delaying Descartes 6 seconds
+14:19:48 | Aristotle is thinking
+14:19:48 | Delaying Aristotle 2 seconds
+14:19:48 | Aquinas is eating
+14:19:48 | Delaying Aquinas 2 seconds
+14:19:50 | Marx is hungry
+14:19:50 | Aquinas is thinking
+14:19:50 | Delaying Aquinas 8 seconds
+14:19:50 | Aristotle is hungry
+14:19:51 | Marx is eating
+14:19:51 | Delaying Marx 5 seconds
+14:19:51 | Kant is eating
+14:19:51 | Delaying Kant 4 seconds
+14:19:51 | Socrates is thinking
+14:19:51 | Delaying Socrates 8 seconds
+14:19:54 | Descartes is thinking
+14:19:54 | Delaying Descartes 5 seconds
+14:19:55 | Aristotle is eating
+14:19:55 | Delaying Aristotle 5 seconds
+14:19:55 | Kant is thinking
+14:19:55 | Delaying Kant 5 seconds
+14:19:56 | Marx is thinking
+14:19:56 | Delaying Marx 4 seconds
+14:19:58 | Plato is hungry
+14:19:58 | Plato is eating
+14:19:58 | Delaying Plato 1 seconds
+14:19:58 | Aquinas is hungry
+14:19:59 | Socrates is hungry
+14:19:59 | Socrates is eating
+14:19:59 | Delaying Socrates 8 seconds
+14:19:59 | Descartes is hungry
+14:19:59 | Plato is thinking
+14:19:59 | Delaying Plato 5 seconds
+14:19:59 | Aquinas is eating
+14:19:59 | Delaying Aquinas 5 seconds
+14:20:00 | Aristotle is thinking
+14:20:00 | Delaying Aristotle 6 seconds
+14:20:00 | Marx is hungry
+14:20:00 | Kant is hungry
+14:20:00 | Descartes is eating
+14:20:00 | Delaying Descartes 3 seconds
+14:20:03 | Descartes is thinking
+14:20:03 | Delaying Descartes 10 seconds
+14:20:04 | Plato is hungry
+14:20:04 | Plato is eating
+14:20:04 | Delaying Plato 8 seconds
+14:20:04 | Aquinas is thinking
+14:20:04 | Delaying Aquinas 1 seconds
+14:20:05 | Aquinas is hungry
+14:20:06 | Aristotle is hungry
+14:20:06 | Aristotle is eating
+14:20:06 | Delaying Aristotle 7 seconds
+14:20:07 | Marx is eating
+14:20:07 | Delaying Marx 9 seconds
+14:20:07 | Socrates is thinking
+14:20:07 | Delaying Socrates 5 seconds
+14:20:12 | Socrates is hungry
+14:20:12 | Plato is thinking
+14:20:12 | Delaying Plato 2 seconds
+14:20:13 | Descartes is hungry
+14:20:13 | Descartes is eating
+14:20:13 | Delaying Descartes 10 seconds
+14:20:13 | Kant is eating
+14:20:13 | Delaying Kant 9 seconds
+14:20:13 | Aristotle is thinking
+14:20:13 | Delaying Aristotle 10 seconds
+14:20:14 | Plato is hungry
+14:20:16 | Aquinas is eating
+14:20:16 | Delaying Aquinas 9 seconds
+14:20:16 | Marx is thinking
+14:20:16 | Delaying Marx 5 seconds

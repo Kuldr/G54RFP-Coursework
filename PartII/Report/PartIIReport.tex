@@ -1,0 +1,61 @@
+\documentclass[a4paper]{article}
+\usepackage{lipsum}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{indentfirst}
+\usepackage{enumerate}
+\usepackage{multicol}
+\lstset{language=Haskell}
+\usepackage[margin=2cm]{geometry}
+\graphicspath{ {images/} }
+\renewcommand{\familydefault}{\sfdefault}
+
+\title{COMP4075/G54RFP Coursework Part II}
+\date{5\textsuperscript{th} December 2018}
+\author{Benjamin Charlton --- psybc3 --- 4262648}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Benjamin Charlton | psybc3 | 4262648}
+\rhead{G54RFP}
+\cfoot{\thepage}
+
+\begin{document}
+
+\maketitle
+
+\section{Task II.1 --- Dining Philosophers}
+\begin{itemize}
+    \item Explain Design and Implementation
+    \item Sample output
+    \item Discuss STM in relation to Resource Hierarchy Solution and arbitrator solution on wikipedia
+\end{itemize}
+
+\subsection{Solution Design}
+The problem is to develop a system simulating a number of philosophers at a table all alternating between thinking and eating.
+The issue is the limited amount of eating implements (sporks were used in this solution as to distinguish from forking threads) and the fact each philosopher needs 2 sporks to eat.
+\par
+The main idea behind the solution is the use of Software Transactional Memory (STM), where each spork is held in a piece of STM\@.
+If a philosopher is hungry they will wait until they can grab both sporks at the same time and then begin eating.
+After they have finished eating they return the sporks to the table (adding them back into the relevant STM) so others can get them if required.
+
+\subsection{Sample Output}
+Here is some sample output for my solution running with 7 philosophers around the table.
+It shows the first 50 lines of output and the time of each line being printed.
+\begin{center}
+    \begin{multicols}{2}
+        \lstinputlisting[firstline=0, lastline=50]{Suppliments/dpOutput.txt}
+    \end{multicols}
+\end{center}
+
+% \subsection{Implementation}
+% \subsubsection{Helper Functions}
+
+
+% \lstinputlisting[language=Haskell, firstline=5, lastline=9]{reportCode.hs}
+
+
+\end{document}
