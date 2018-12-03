@@ -40,9 +40,13 @@ philosipher name (ls,rs) = do
     philosipher name (ls,rs)
 
 main = do
+    -- Create a list of sporks for the philosiphers to use
+    -- Used sporks as to not confuse with threads forking
     sporks <- mapM newTMVarIO [1..length(philosiphers)]
+    -- Create a pair of sporks left and right of a philosipher
     let pairs = zip sporks (tail(sporks) ++ [(head sporks)])
 
+    -- Fork all of the philosiphers with the a name and a pair
     forkIO (philosipher (philosiphers!!0) (pairs!!0))
     forkIO (philosipher (philosiphers!!1) (pairs!!1))
     forkIO (philosipher (philosiphers!!2) (pairs!!2))
