@@ -16,35 +16,36 @@ getTimeString = do
                     zt <- getZonedTime
                     return $ formatTime defaultTimeLocale "%H:%M:%S" zt
 
--- Prints to screen "Time | Philosopher Action"
-printPhilosopherAction :: String -> String -> IO ()
-printPhilosopherAction name a = do
+-- Prints to screen "Time | Philosopher Intent"
+printPhilosopherIntent :: String -> String -> IO ()
+printPhilosopherIntent name i = do
                                     timeString <- getTimeString
-                                    putStrLn (timeString ++ " | " ++ name ++ a)
+                                    putStrLn (timeString ++ " | " ++ name ++ " is " ++ i)
 
 -- Prints to screen "Time | Delaying Philosopher s Seconds" and delays the thread
-printPhilosopherDelay :: String -> Int -> IO ()
-printPhilosopherDelay name s = do
+delayPhilosopherPrint :: String -> Int -> IO ()
+delayPhilosopherPrint name s = do
                                     timeString <- getTimeString
                                     putStrLn (timeString ++ " | Delaying " ++ name ++ " " ++ show(s) ++ " seconds")
                                     threadDelay (μstos s)
 
--- Doesn't need to be TMVar Int
-
+-- A list of names of philosophers
 philosophers :: [String]
 philosophers = ["Socrates", "Kant", "Aristotle", "Descartes", "Plato", "Aquinas", "Marx"]
+
+-- Doesn't need to be TMVar Int
 
 philosopher :: String -> ((TMVar Int), (TMVar Int)) -> IO ()
 philosopher name (ls,rs) = do
     -- Philosopher is thinking
     -- Wait for a random number of seconds and announce you are doing so
-    printPhilosopherAction name " is thinking"
+    printPhilosopherIntent name "thinking"
     seconds <- randomRIO (1, 10)
-    printPhilosopherDelay name seconds
+    delayPhilosopherPrint name seconds
 
     -- Philosopher is hungry
     -- Attempt to get both sporks together (will wait until it can get both)
-    printPhilosopherAction name " is hungry"
+    printPhilosopherIntent name "hungry"
     (l, r) <- atomically $ do
         l <- takeTMVar ls
         r <- takeTMVar rs
