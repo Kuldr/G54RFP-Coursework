@@ -51,5 +51,6 @@ main = do
     forkIO (philosipher (philosiphers!!5) (pairs!!5))
     forkIO (philosipher (philosiphers!!6) (pairs!!6))
 
-    done <- newEmptyMVar
-    takeMVar done
+    -- Used to delay main forever so that the philosiphers can run
+    -- Need to use Ctrl+C to close the program
+    forever $ threadDelay (μstos 1)
