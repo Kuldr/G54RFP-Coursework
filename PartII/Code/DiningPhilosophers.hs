@@ -4,7 +4,31 @@ import Control.Monad
 import Control.Concurrent
 import Control.Concurrent.STM
 import System.Random
+import Data.Time (getZonedTime, formatTime, defaultTimeLocale)
 
+-- Convert seconds to microseconds
+μstos :: Int -> Int
+μstos i = i * 1000000
+
+-- Gets a formatted string of the current time
+getTimeString :: IO String
+getTimeString = do
+                    zt <- getZonedTime
+                    return $ formatTime defaultTimeLocale "%H:%M:%S" zt
+
+-- Prints to screen "Time | Philosipher Action"
+printPhilosipherAction :: String -> String -> IO ()
+printPhilosipherAction name a = do
+                                    timeString <- getTimeString
+                                    putStrLn (timeString ++ " | " ++ name ++ a)
+
+-- Prints to screen "Time | Delaying Philosipher s Seconds" and delays the thread
+printPhilosipherDelay :: String -> Int -> IO ()
+printPhilosipherDelay name s = do
+                                    timeString <- getTimeString
+                                    putStrLn (timeString ++ " | Delaying " ++ name ++ " " ++ show(s) ++ " seconds")
+                                    threadDelay (μstos s)
+                                    
 -- Doesn't need to be TMVar Int
 
 philosiphers :: [String]
@@ -13,25 +37,26 @@ philosiphers = ["Socrates", "Kant", "Aristotle", "Descartes", "Plato", "Aquinas"
 philosipher :: String -> ((TMVar Int), (TMVar Int)) -> IO ()
 philosipher name (ls,rs) = do
     -- Philosipher is thinking
-    putStrLn (name ++ " is thinking")
+    -- Wait for a random number of seconds and announce you are doing so
+    printPhilosipherAction name " is thinking"
     seconds <- randomRIO (1, 10)
-    putStrLn ("Delaying " ++ name ++ " " ++ show(seconds) ++ " seconds")
-    threadDelay (seconds*1000000)
+    printPhilosipherDelay name seconds
 
-    -- Philosipher is hungry, try to get both sporks
-    putStrLn (name ++ " is hungry")
+    -- Philosipher is hungry
+    -- Attempt to get both sporks together (will wait until it can get both)
+    printPhilosipherAction name " is hungry"
     (l, r) <- atomically $ do
         l <- takeTMVar ls
         r <- takeTMVar rs
         return (l, r)
 
-    -- Philosipher has sporks so they can eat
-    putStrLn (name ++ " is eating")
+    -- Philosipher is eating
+    -- Philosipher has both sporks so they can eat for a random number of seconds
+    printPhilosipherAction name " is eating"
     seconds <- randomRIO (1, 10)
-    putStrLn ("Delaying " ++ name ++ " " ++ show(seconds) ++ " seconds")
-    threadDelay (seconds*1000000)
+    printPhilosipherDelay name seconds
 
-    -- Philosipher puts the sporks back
+    -- Philosipher has finished eating so put both forks back together.
     atomically $ do
         putTMVar ls l
         putTMVar rs r
