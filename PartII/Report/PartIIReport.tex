@@ -28,11 +28,6 @@
 \maketitle
 
 \section{Task II.1 --- Dining Philosophers}
-\begin{itemize}
-    \item Explain Design and Implementation
-    \item Sample output
-    \item Discuss STM in relation to Resource Hierarchy Solution and arbitrator solution on wikipedia
-\end{itemize}
 
 \subsection{Solution Design}
 The problem is to develop a system simulating a number of philosophers at a table all alternating between thinking and eating.
@@ -41,6 +36,9 @@ The issue is the limited amount of eating implements (sporks were used in this s
 The main idea behind the solution is the use of Software Transactional Memory (STM), where each spork is held in a piece of STM\@.
 If a philosopher is hungry they will wait until they can grab both sporks at the same time and then begin eating.
 After they have finished eating they return the sporks to the table (adding them back into the relevant STM) so others can get them if required.
+\par
+The solution is designed to generate a number of sporks equal to the number of philosophers.
+This means that the system can work with an arbitrary number of philosophers that is \( \ge 1\) as 1 philosopher will cause a deadlock as they want 2 sporks but only 1 exists.
 
 \subsection{Sample Output}
 Here is some sample output for my solution running with 7 philosophers around the table.
@@ -51,11 +49,82 @@ It shows the first 50 lines of output and the time of each line being printed.
     \end{multicols}
 \end{center}
 
-% \subsection{Implementation}
-% \subsubsection{Helper Functions}
+\subsection{Implementation}
 
+\subsubsection{Helper Functions}
+\paragraph{Microseconds to Seconds}
+This function converts a integer representing a number of seconds to the same time in microseconds
+\lstinputlisting[language=Haskell, firstline=3, lastline=4]{reportIICode.hs}
+\paragraph{Getting a String containing the current time}
+This function uses the library Data.Time to get the current time and format it.
+\lstinputlisting[language=Haskell, firstline=6, lastline=9]{reportIICode.hs}
+\paragraph{Printing a Philosopher doing an Action}
+This function prints a formatted string with the current time, the philosophers name and their intent (Thinking, Hungry, Eating)
+\lstinputlisting[language=Haskell, firstline=11, lastline=15]{reportIICode.hs}
+\paragraph{Delaying a Philosopher and Printing}
+This function will print how long the philosopher thread will be delayed (used to simulate the thinking/eating time) and then delays the thread for the given number of seconds.
+\lstinputlisting[language=Haskell, firstline=17, lastline=23]{reportIICode.hs}
 
-% \lstinputlisting[language=Haskell, firstline=5, lastline=9]{reportCode.hs}
+\subsection{Philosopher function}
+The main outline of the philosopher function is an infinite loop by recursively calling itself without changing any of the inputs.
+It takes a string for the philosophers name and the pair of sporks that the philosopher will use while doing some IO action.
+The work that happens during this function is described in the following paragraphs but this code segment gives an idea of the overall structure.
+\lstinputlisting[language=Haskell, firstline=25, lastline=29]{reportIICode.hs}
+\paragraph{Thinking}
+The thing the philosopher does first is thinking.
+This is done by simply declaring the intent and then delaying for a random number of seconds (between 1 and 10).
+\lstinputlisting[language=Haskell, firstline=31, lastline=33]{reportIICode.hs}
+\paragraph{Hungry}
+Once the philosopher has stopped thinking they will become hungry.
+While hungry they try and take the 2 sporks on either side of them, this action is done atomically to ensure that their are no dead locks.
+\lstinputlisting[language=Haskell, firstline=35, lastline=39]{reportIICode.hs}
+\paragraph{Eating}
+Once the philosopher has both sporks they can start eating, this happens in the same way as the thinking with a stating the intent and then delaying for a random amount of time.
+Once they have finished eating, they return the sporks by atomically putting them back correctly.
+Although the value replaced strictly doesn't matter they return the same value to the TMVar.
+\lstinputlisting[language=Haskell, firstline=41, lastline=46]{reportIICode.hs}
 
+\subsection{Main}
+The main function is what is executed when the program first runs, this is split into 3 major sections.
+\paragraph{Generating pairs of sporks}
+In the first 2 lines of the main function all of the synchronising variables are created.
+First of all the correct number of sporks equal to the number of philosophers and numbers them, the numbering isn't required for the system to run but allows for an easy and efficient way of creating enough TMVars in a map.
+After this the sporks are zipped into relevant pairs so that they can be passed onto the philosophers.
+\paragraph{Forking philosophers}
+The next lines deals with the forking separate threads for each of the philosophers.
+It zips the philosopher and pairs of sporks together running each one under the philosopher function.
+For each element in this list it will fork a separate thread to run the philosopher under.
+\paragraph{Blocking Main}
+The final is a way to allow main to continue running as if main ever terminates the philosopher threads will also end.
+By continuously calling threadDelay it means that main will never terminate.
+\lstinputlisting[language=Haskell, firstline=48, lastline=54]{reportIICode.hs}
+
+\subsection{STM vs Classical Solutions}
+
+\subsubsection{Why STM is free of deadlocks}
+During attempts to pick up sporks both actions are done atomically, meaning that there is no way for a philosopher to have access to a single spork.
+If a philosopher can't access the sporks it will simply wait and retry until it can access them both.
+
+\subsubsection{Resource Hierarchy Solution}
+A pro of using STM a hierarchy solution is that a STM doesn't generate a situation where many philosophers are holding a single spork waiting for the other to become available.
+This is because an STM allows for both sporks to be picked up at the same time allowing more of the philosophers eating at the same time.
+As stated in the wikipedia article if there was 5 philosophers at a table all hungry at the same it would mean that only 1 philosopher would have access to both sporks required for eating, in the STM system 2 philosophers would manage to get access to both required sporks.
+This situation doesn't get any better for more philosophers as in the hierarchy system there will always only be 1 philosopher able to get both resources, this would often result in a long wait time for the others to eat and the available fork trickling one by one around the table, only having one philosopher eating at a time.
+The STM system would allow \( \frac{1}{2}\) of the philosophers to eat at once giving a higher utilisation of resources and sooner freeing of those resources for other philosophers.
+\par
+Another problem with the hierarchy system is if at a later date a thread requires more resources it needs to systematically free the higher resources are require them all starting at the lowest resource.
+This can result in complex code to write as you have to remember to acquire resources in the correct order.
+With an STM this can be resolved by freeing all of the resources and then reacquiring them all atomically, as the order doesn't matter its much simpler to reacquire the resources you need correctly.
+
+\subsubsection{Arbitrator Solution}
+The arbitrator solution creates a single synchronisation variable that tells the philosophers if they are allowed to pick up sporks.
+This simplifies the amount of synchronisation needed to be managed but can reduce the parallelism as several philosophers that could safely pick up sporks have to wait and it also makes the synchronising logic more complex.
+\par
+You can leave the synchronisation logic fairly simple if you simply let a single philosopher attempt to pick up their sporks at once and if they fail to do so let them continue trying until they succeed (This works as replacing sporks is always allowed).
+The problem with this solution is the reduction in parallelism achieved as many threads are simply waiting for their turn, an issue that is reduced with the STM solution.
+\par
+You could create a more sophisticated synchronisation logic if you allowed philosophers to revoke its permission to collect sporks if it fails to collect them.
+This would allow the arbitrator to give another philosopher a chance to try and access their sporks and they may succeed.
+This would increase parallelism but not to the same levels as the STM solution, while also requiring much more complex logic leaving more places where bugs could occur.
 
 \end{document}

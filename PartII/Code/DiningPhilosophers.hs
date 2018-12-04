@@ -33,8 +33,6 @@ delayPhilosopherPrint name s = do
 philosophers :: [String]
 philosophers = ["Socrates", "Kant", "Aristotle", "Descartes", "Plato", "Aquinas", "Marx"]
 
--- Doesn't need to be TMVar Int
-
 philosopher :: String -> ((TMVar Int), (TMVar Int)) -> IO ()
 philosopher name (ls,rs) = do
     -- Philosopher is thinking
@@ -53,9 +51,9 @@ philosopher name (ls,rs) = do
 
     -- Philosopher is eating
     -- Philosopher has both sporks so they can eat for a random number of seconds
-    printPhilosopherAction name " is eating"
+    printPhilosopherIntent name "eating"
     seconds <- randomRIO (1, 10)
-    printPhilosopherDelay name seconds
+    delayPhilosopherPrint name seconds
 
     -- Philosopher has finished eating so put both forks back together.
     atomically $ do
@@ -73,13 +71,7 @@ main = do
     let pairs = zip sporks (tail(sporks) ++ [(head sporks)])
 
     -- Fork all of the philosophers with the a name and a pair
-    forkIO (philosopher (philosophers!!0) (pairs!!0))
-    forkIO (philosopher (philosophers!!1) (pairs!!1))
-    forkIO (philosopher (philosophers!!2) (pairs!!2))
-    forkIO (philosopher (philosophers!!3) (pairs!!3))
-    forkIO (philosopher (philosophers!!4) (pairs!!4))
-    forkIO (philosopher (philosophers!!5) (pairs!!5))
-    forkIO (philosopher (philosophers!!6) (pairs!!6))
+    mapM forkIO $ zipWith philosopher philosophers pairs
 
     -- Used to delay main forever so that the philosophers can run
     -- Need to use Ctrl+C to close the program
