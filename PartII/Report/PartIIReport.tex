@@ -106,8 +106,8 @@ During attempts to pick up sporks both actions are done atomically, meaning that
 If a philosopher can't access the sporks it will simply wait and retry until it can access them both.
 
 \subsubsection{Resource Hierarchy Solution}
-A pro of using STM a hierarchy solution is that a STM doesn't generate a situation where many philosophers are holding a single spork waiting for the other to become available.
-This is because an STM allows for both sporks to be picked up at the same time allowing more of the philosophers eating at the same time.
+A pro of using an STM over a hierarchy solution is that a STM doesn't generate a situation where many philosophers are holding a single spork waiting for the other to become available.
+This is because an STM only allows for both sporks to be picked up at the same time allowing more of the philosophers eating at the same time.
 As stated in the wikipedia article if there was 5 philosophers at a table all hungry at the same it would mean that only 1 philosopher would have access to both sporks required for eating, in the STM system 2 philosophers would manage to get access to both required sporks.
 This situation doesn't get any better for more philosophers as in the hierarchy system there will always only be 1 philosopher able to get both resources, this would often result in a long wait time for the others to eat and the available fork trickling one by one around the table, only having one philosopher eating at a time.
 The STM system would allow \( \frac{1}{2}\) of the philosophers to eat at once giving a higher utilisation of resources and sooner freeing of those resources for other philosophers.
@@ -200,11 +200,6 @@ Finally all of the binary operators are applied, the definition for add is given
 \lstinputlisting[language=Haskell, firstline=76, lastline=83]{reportIICode.hs}
 
 \subsubsection{Advanced Functions}
-\begin{itemize}
-    \item Decimal
-    \item Memory
-    \item Precedence
-\end{itemize}
 \paragraph{Decimal Fractions}
 To handle decimal numbers, all numbers are evaluated as doubles.
 This is a simple and easy way to leverage the strong type system of Haskell to give a sensible answer.
@@ -255,12 +250,12 @@ If they are then we round the double to and int before showing it, this stops wh
 \paragraph{Creating common events}
 As some of the buttons on the calculator were both grouped together and were handled similarly, helper functions were made to create their actions.
 This allowed for the digits and the operators to be created using a map, easily grouping them together as a list.
-\lstinputlisting[language=Haskell, firstline=126, lastline=131]{reportIICode.hs}
+\lstinputlisting[language=Haskell, firstline=126, lastline=132]{reportIICode.hs}
 
 \subsubsection{Setup}
 Set up is a large function that sets up all of the UI elements and the event handling.
 It begins by simply setting the title of the window so the user can see name in the tab.
-\lstinputlisting[language=Haskell, firstline=135, lastline=137]{reportIICode.hs}
+\lstinputlisting[language=Haskell, firstline=136, lastline=138]{reportIICode.hs}
 
 \paragraph{Button Creation}
 The next step is to create all of the buttons required.
@@ -268,7 +263,7 @@ The numbers and the operations are created using a map as they will be reference
 The remaining buttons are created in a more imperative way.
 \par
 Note that some of the symbols used in the code below are different to the actual ones used as the unicode characters weren't showing in latex.
-\lstinputlisting[language=Haskell, firstline=140, lastline=149]{reportIICode.hs}
+\lstinputlisting[language=Haskell, firstline=141, lastline=150]{reportIICode.hs}
 
 \paragraph{Events}
 Adding the events to the buttons was also done in imperative style.
@@ -276,18 +271,18 @@ As the the numbers and operations were in a list they can all be done using a zi
 The majority of the other functions also need to have a calculator as an input so a lambda function is used to correctly add them as an event.
 \par
 After all the events handlers have been created they are made into a single list for convenience.
-\lstinputlisting[language=Haskell, firstline=152, lastline=166]{reportIICode.hs}
+\lstinputlisting[language=Haskell, firstline=153, lastline=168]{reportIICode.hs}
 
 \paragraph{Accumulating Events}
 Now all of the events are created, functional reactive programming can be used to respond to the events.
 With all the events in a list its simple to fold across them all dealing with an event as it comes in.
 clearCalculator is used to get a default calculator at cleared settings allowing for the definitions to be easily changed in the future while not requiring to change lots of code.
-\lstinputlisting[language=Haskell, firstline=169, lastline=169]{reportIICode.hs}
+\lstinputlisting[language=Haskell, firstline=171, lastline=171]{reportIICode.hs}
 
 \paragraph{Displaying the Result and Calculation}
 As previously stated the answer and calculation can be shown as a string so the following lines will continuously take the changing calculators from the previous line and show the answer anc calculation respectively.
 These are placed into UI elements so that they can be shown to the user.
-\lstinputlisting[language=Haskell, firstline=172, lastline=173]{reportIICode.hs}
+\lstinputlisting[language=Haskell, firstline=174, lastline=175]{reportIICode.hs}
 
 \paragraph{Adding elements to the window}
 The final part is to add all of the UI elements to the window.
@@ -298,6 +293,6 @@ We also get a nice payoff for using lists to hold the digit and operator buttons
 We can succinctly use a list comprehension to add all of the buttons the the UI list without calling them all by name.
 \par
 Each line of the list is used to help show where the breaks in the UI are placed.
-\lstinputlisting[language=Haskell, firstline=176, lastline=185]{reportIICode.hs}
+\lstinputlisting[language=Haskell, firstline=178, lastline=187]{reportIICode.hs}
 
 \end{document}

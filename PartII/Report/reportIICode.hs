@@ -127,7 +127,8 @@ createActionInt :: Element -> Double -> Event (Calculator -> Calculator)
 createActionInt button i = (\x -> addDigitCalculator x i) <$ UI.click button
 
 createAction :: Element -> Calc -> Event (Calculator -> Calculator)
-createAction button (Add _ _) = ( \(C (c, d)) -> (C ((Add c (Num 0)), d)) ) <$ UI.click button
+createAction button (Add _ _) =
+    ( \(C (c, d)) -> (C ((Add c (Num 0)), d)) ) <$ UI.click button
 -- Same definition as Add for other operators
 
 -- Setup
@@ -163,7 +164,8 @@ let eventSign  = (\x -> changeSign x) <$ UI.click buttonSign
 let eventAns   = (\x -> addAnswerCalculator x) <$ UI.click buttonAns
 let eventEqual = (\x -> evaluateCalc x) <$ UI.click buttonEq
 
-let events = eventsNum ++ eventsOps ++ [eventClear, eventSign, eventEqual, eventCrEnt, eventAns, eventPi, eventE, eventRt2]
+let events = eventsNum ++ eventsOps ++ [eventClear, eventSign, eventEqual,
+                            eventCrEnt, eventAns, eventPi, eventE, eventRt2]
 
 -- Add the event handler to access the calculator with a starting value of reset
 calculator  <- accumB clearCalculator $ foldl1 (unionWith const) events
