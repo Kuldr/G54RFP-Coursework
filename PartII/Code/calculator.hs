@@ -8,7 +8,8 @@ import Data.IORef
 newtype Calculator = C (Calc, Double)
 
 -- Recursive Data type to store the calculation as a dynamic tree
-data Calc = Num Double | Sign Calc | Add Calc Calc | Min Calc Calc |
+data Calc = Num Double | Sign Calc |
+            Add Calc Calc | Min Calc Calc |
             Div Calc Calc | Mul Calc Calc
 -- Ability to show the calculation as a string in the UI
 instance Show Calc where
@@ -78,6 +79,10 @@ setup window = do
                                      )]
     return ()
 
+-- Create a event for a given digit on the and button
+createActionInt :: Element -> Double -> Event (Calculator -> Calculator)
+createActionInt button i = (\x -> addDigitCalculator x i) <$ UI.click button
+
 -- Helper function to add a Digit to the calculator
 addDigitCalculator :: Calculator -> Double -> Calculator
 addDigitCalculator (C (c, d)) i = (C ((addDigitCalc c i), d))
@@ -110,7 +115,7 @@ createAction button (Div _ _) = ( \(C (c, d)) -> (C ((Div c (Num 0)), d)) ) <$ U
 -- Evaluate a given calculator
 -- Operations are evaluated left to right NOT in order of precedence
 evaluateCalc :: Calculator -> Calculator
-evaluateCalc (C (c, d)) = (C ((Num 0), evaluate c))
+evaluateCalc (C (c, _)) = (C ((Num 0), evaluate c))
 
 -- Evaluate a given calculation
 evaluate :: Calc -> Double
@@ -121,10 +126,6 @@ evaluate (Div c d) = (evaluate c) / (evaluate d)
 evaluate (Min c d) = (evaluate c) - (evaluate d)
 evaluate (Sign c)  = (-1) * (evaluate c)
 
--- Create a event for a given digit on the and button
-createActionInt :: Element -> Double -> Event (Calculator -> Calculator)
-createActionInt button i = (\x -> addDigitCalculator x i) <$ UI.click button
-
 -- Resets the previous answer on the calculator
 clearEntry :: Calculator -> Calculator
 clearEntry (C (c, _)) = (C (c, 0))
@@ -134,14 +135,11 @@ clearCalculator :: Calculator
 clearCalculator = C ((Num 0), 0)
 
 -- Replaces the last number in the calculation with a given value
-addAnswerCalculator :: Calculator -> Calculator
-addAnswerCalculator (C (c, d)) = (C ((changeLastNumCalc c d), d))
-addPiCalculator :: Calculator -> Calculator
-addPiCalculator (C (c, d)) = (C ((changeLastNumCalc c pi), d))
-addECalculator :: Calculator -> Calculator
-addECalculator (C (c, d)) = (C ((changeLastNumCalc c (exp 1)), d))
-addRt2Calculator :: Calculator -> Calculator
-addRt2Calculator (C (c, d)) = (C ((changeLastNumCalc c (sqrt 2)), d))
+addAnswerCalculator, addPiCalculator, addECalculator, addRt2Calculator :: Calculator -> Calculator
+addAnswerCalculator (C (c, d)) = (C ((changeLastNumCalc c d),        d))
+addPiCalculator     (C (c, d)) = (C ((changeLastNumCalc c pi),       d))
+addECalculator      (C (c, d)) = (C ((changeLastNumCalc c (exp 1)),  d))
+addRt2Calculator    (C (c, d)) = (C ((changeLastNumCalc c (sqrt 2)), d))
 
 -- Takes in the current calculation and will change the last number to what is given
 -- This is used to replace the last number with the ans or a constant.
