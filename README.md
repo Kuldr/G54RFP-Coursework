@@ -1,5 +1,5 @@
 G54RFP
 
-[Part I Report](partI/Report/PartIReport.pdf)
+[Part I Report](PartI/Report/PartIReport.pdf)
 
-[Part II Report](partII/Report/PartIIReport.pdf)
+[Part II Report](PartII/Report/PartIIReport.pdf)
